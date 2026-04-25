@@ -19,11 +19,13 @@ export default function PatientsPage() {
   const [patients, setPatients] = useState<Patient[]>([]);
   const [loading, setLoading] = useState(true);
 
-  async function chargerPatients() {
-    const res = await fetch("/api/patients");
-    const data = await res.json();
-    setPatients(data);
-    setLoading(false);
+  function chargerPatients() {
+    fetch("/api/patients")
+      .then((res) => res.json())
+      .then((data) => {
+        setPatients(data);
+        setLoading(false);
+      });
   }
 
   useEffect(() => {
@@ -35,10 +37,7 @@ export default function PatientsPage() {
     const today = new Date();
     let age = today.getFullYear() - naissance.getFullYear();
     const m = today.getMonth() - naissance.getMonth();
-    if (
-      m < 0 ||
-      (m === 0 && today.getDate() < naissance.getDate())
-    ) {
+    if (m < 0 || (m === 0 && today.getDate() < naissance.getDate())) {
       age--;
     }
     return age;
@@ -46,9 +45,7 @@ export default function PatientsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">
-        Patients
-      </h1>
+      <h1 className="text-2xl font-bold text-gray-800 mb-6">Patients</h1>
       <PatientForm onSuccess={chargerPatients} />
       <h2 className="text-xl font-semibold text-gray-700 mt-8 mb-4">
         Liste des patients ({patients.length})

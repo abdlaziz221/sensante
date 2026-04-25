@@ -36,6 +36,7 @@ export default function PatientForm({
       e.currentTarget.reset();
       onSuccess();
     }
+
     setLoading(false);
   }
 
@@ -55,48 +56,23 @@ export default function PatientForm({
         Nouveau patient
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input
-          name="nom"
-          placeholder="Nom"
-          required
-          className="p-3 border rounded-lg"
-        />
-        <input
-          name="prenom"
-          placeholder="Prénom"
-          required
-          className="p-3 border rounded-lg"
-        />
-        <input
-          name="dateNaissance"
-          type="date"
-          required
-          className="p-3 border rounded-lg"
-        />
+        <input name="nom" placeholder="Nom" required className="p-3 border rounded-lg" />
+        <input name="prenom" placeholder="Prénom" required className="p-3 border rounded-lg" />
+        <input name="dateNaissance" type="date" required className="p-3 border rounded-lg" />
         <select name="sexe" required className="p-3 border rounded-lg">
           <option value="">Sexe</option>
           <option value="F">Femme</option>
           <option value="M">Homme</option>
         </select>
-        <input
-          name="telephone"
-          placeholder="Téléphone (optionnel)"
-          className="p-3 border rounded-lg"
-        />
+        <input name="telephone" placeholder="Téléphone (optionnel)" className="p-3 border rounded-lg" />
         <select name="region" required className="p-3 border rounded-lg">
           <option value="">Région</option>
           {regions.map((r) => (
-            <option key={r} value={r}>
-              {r}
-            </option>
+            <option key={r} value={r}>{r}</option>
           ))}
         </select>
       </div>
-      <input
-        name="adresse"
-        placeholder="Adresse (optionnel)"
-        className="w-full p-3 border rounded-lg"
-      />
+      <input name="adresse" placeholder="Adresse (optionnel)" className="w-full p-3 border rounded-lg" />
       <button
         type="submit"
         disabled={loading}
