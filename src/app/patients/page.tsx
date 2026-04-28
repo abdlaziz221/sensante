@@ -23,7 +23,15 @@ export default function PatientsPage() {
     fetch("/api/patients")
       .then((res) => res.json())
       .then((data) => {
-        setPatients(data);
+        if (Array.isArray(data)) {
+          setPatients(data);
+        } else {
+          setPatients([]);
+        }
+        setLoading(false);
+      })
+      .catch(() => {
+        setPatients([]);
         setLoading(false);
       });
   }
