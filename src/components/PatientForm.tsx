@@ -13,9 +13,10 @@ export default function PatientForm({
     e: React.FormEvent<HTMLFormElement>
   ) {
     e.preventDefault();
+    const form = e.currentTarget;
     setLoading(true);
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(form);
     const data = {
       nom: formData.get("nom"),
       prenom: formData.get("prenom"),
@@ -33,7 +34,7 @@ export default function PatientForm({
     });
 
     if (res.ok) {
-      e.currentTarget.reset();
+      form.reset();
       onSuccess();
     }
 
