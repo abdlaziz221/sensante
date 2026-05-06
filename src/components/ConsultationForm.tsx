@@ -70,7 +70,7 @@ export default function ConsultationForm({
 
       <div>
         <label className="block text-sm font-semibold text-gray-700 mb-2">Patient</label>
-        <select name="patientId" required className="w-full p-3 border rounded-lg">
+        <select name="patientId" required className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-orange-400">
           <option value="">Sélectionner un patient</option>
           {patients.map((p) => (
             <option key={p.id} value={p.id}>
@@ -90,8 +90,8 @@ export default function ConsultationForm({
               key={s}
               className={`flex items-center gap-2 p-2 rounded-lg border cursor-pointer transition ${
                 symptomes.includes(s)
-                  ? "bg-orange-50 border-orange-400"
-                  : "hover:bg-gray-50"
+                  ? "bg-orange-50 border-orange-400 text-orange-900"
+                  : "border-gray-300 text-gray-800 hover:bg-gray-50"
               }`}
             >
               <input
@@ -100,7 +100,7 @@ export default function ConsultationForm({
                 onChange={() => toggleSymptome(s)}
                 className="accent-orange-500"
               />
-              <span className="text-sm">{s}</span>
+              <span className="text-sm font-medium">{s}</span>
             </label>
           ))}
         </div>
@@ -114,7 +114,7 @@ export default function ConsultationForm({
           name="notes"
           rows={3}
           placeholder="Observations cliniques..."
-          className="w-full p-3 border rounded-lg"
+          className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
         />
       </div>
 
