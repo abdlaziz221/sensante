@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "PowerShell(npx prisma db execute --file prisma/_clear-consultations.sql --schema prisma/schema.prisma)"
+    ]
+  }
+}
