@@ -1,12 +1,11 @@
 import { prisma } from "@/lib/prisma";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    // Vérifier que l'email n'existe pas déjà
     const existant = await prisma.user.findUnique({
       where: { email: body.email },
     });
@@ -18,7 +17,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Hasher le mot de passe (JAMAIS stocker en clair)
     const hashedPassword = await bcrypt.hash(body.password, 10);
 
     const user = await prisma.user.create({
@@ -38,8 +36,8 @@ export async function POST(request: Request) {
       },
       { status: 201 }
     );
-
   } catch (error) {
+    console.error("ERREUR REGISTER:", error);
     return NextResponse.json(
       { error: "Erreur lors de l'inscription" },
       { status: 500 }
