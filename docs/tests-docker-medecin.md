@@ -1,0 +1,11 @@
+CHECKLIST
+- [ok ] Page d'accueil SénSanté s'affiche
+- [ ok] Inscription (créer un nouveau compte)
+- [ ok] Connexion avec ce compte
+- [ ok] Créer un patient (remplir formulaire)
+- [ ok] Lister les patients (page /patients)
+- [ ok] Créer une consultation (sélectionner patient, cocher symptômes)
+- [ ok] Lancer le diagnostic IA (bouton violet)
+- [ ok] Dashboard (/dashboard) affiche les statistiques
+- [ ok ] Navigation sidebar fonctionne
+- [ ok ] Déconnexion puis reconnexion
